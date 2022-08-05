@@ -1,0 +1,16 @@
+.chat-input{
+    background-color:#616161;
+    color:#ffffff;
+    border: none;
+}
+
+.chat-input::placeholder{
+    color:#ffffff;
+}
+
+.sticky-footer{
+    position: fixed;
+    bottom: 0;
+    color: #ffffff;
+    text-align: center;
+}

@@ -8,6 +8,8 @@ import Web3 from "web3";
   providedIn: 'root'
 })
 export class ConnectService {
+  readonly apikey = 'e4fa10cddeaf401698a3ae52121cdd79';
+
   web3Modal;
   web3Provider: any;
   provider: any;
@@ -18,10 +20,17 @@ export class ConnectService {
 
   constructor() {
     const providerOptions = {
+
       walletconnect: {
         package: WalletConnectProvider, // required
         options: {
           infuraId: 'env', // required change this with your own infura id
+          rpc: {
+            1: "https://mainnet.infura.io/v3/" + this.apikey,
+            42: "https://kovan.infura.io/v3/" + this.apikey,
+            137: "https://polygon-mainnet.infura.io/v3/" + this.apikey,
+            80001: "https://rpc-mumbai.matic.today",
+        },
           description: 'Scan the qr code and sign in',
           qrcodeModalOptions: {
             desktopLinks: [

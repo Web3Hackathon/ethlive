@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphqlService } from './services/graphql.service';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,8 +13,6 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ApolloModule,
-    HttpLinkModule,
     HttpClientModule
   ],
   providers: [

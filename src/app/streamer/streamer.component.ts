@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-streamer',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './streamer.component.html',
   styleUrls: ['./streamer.component.scss']
 })

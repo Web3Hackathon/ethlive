@@ -9,8 +9,9 @@ import { CommonModule, isPlatformBrowser} from '@angular/common';
   styleUrls: ['./golive.component.scss']
 })
 export class GoliveComponent implements OnDestroy {
+  apikey = '47ca6d88-5dcf-4162-90fc-b713e4d9ecb3';
   @ViewChild('video', {static: true}) video: ElementRef<HTMLVideoElement>;
-
+ 
   constructor(@Inject(PLATFORM_ID) private _platform: Object) {}
 
   onStart(){

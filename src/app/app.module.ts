@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { StreamerComponent } from './streamer/streamer.component';
 import { ChatComponent } from './chat/chat.component';
 import { InfoComponent } from './info/info.component';
-import { ApolloModule } from 'apollo-angular';
-import { HttpLinkModule } from 'apollo-angular-link-http';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphqlService } from './services/graphql.service';
 
@@ -21,8 +19,6 @@ import { GraphqlService } from './services/graphql.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ApolloModule,
-    HttpLinkModule,
     HttpClientModule
   ],
   providers: [

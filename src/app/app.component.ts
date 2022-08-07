@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LilNounsAuctionEventType, NounsAuctionEventType, SaleSortKey, SaleType, SortDirection } from '@zoralabs/zdk/dist/queries/queries-sdk';
 import { GraphqlService } from './services/graphql.service';
+import { NFTStorageService } from './services/nftstorage.service';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +9,16 @@ import { GraphqlService } from './services/graphql.service';
 })
 export class AppComponent {
   title = 'ethlive';
+  file: any;
 
   constructor(
-    private graphQLService: GraphqlService
+    private graphQLService: GraphqlService,
+    private NFTStorageService: NFTStorageService
   ){
-    this.graphQLService.zdK.sales({
-      where: {
-        sellerAddresses: ["0x830bd73e4184cef73443c15111a1df14e495c706"]
-      },
-      filter: {
-        saleTypes: [SaleType.NounsAuctionSale]
-      },
-      sort:{
-        sortKey: SaleSortKey.ChainTokenPrice,
-        sortDirection: SortDirection.Asc
-      },
-      includeFullDetails: true
-    }).then(console.log);
+    this.graphQLService.getSales().then(console.log);
+  }
+
+  uploadNFT(event: any){
+    this.NFTStorageService.storeNFT(event.target.files[0], event.target.files[0].name, 'Dummy image');
   }
 }

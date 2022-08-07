@@ -1,10 +1,10 @@
 # Ethlive
 
 ## Implements
-[x] Zora 
-[x] Polygon 
-[x] NFT Storage
-[x] Liverpeer
+- [x] Zora 
+- [x] Polygon 
+- [x] NFT Storage
+- [x] Liverpeer
 
 
 https://mumbai.polygonscan.com/address/0xdfaddc2a245afa17633f3e989c967f6e7e504a8a

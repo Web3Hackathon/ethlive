@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { providers } from 'ethers';
 import Web3Modal from 'web3modal';
 
 import WalletConnectProvider from '@walletconnect/web3-provider';
+import Web3 from "web3";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,9 @@ export class ConnectService {
   web3Modal;
   web3Provider: any;
   provider: any;
-  accounts: any| undefined;
+  accounts: string[] | undefined;
+  balance: string | undefined;
+  private web3js: any;
 
 
   constructor() {
@@ -22,15 +24,33 @@ export class ConnectService {
           infuraId: 'env', // required change this with your own infura id
           description: 'Scan the qr code and sign in',
           qrcodeModalOptions: {
+            desktopLinks: [
+              'ledger',
+              'tokenary',
+              'wallet',
+              'wallet 3',
+              'secuX',
+              'ambire',
+              'wallet3',
+              'apolloX',
+              'zerion',
+              'sequence',
+              'punkWallet',
+              'kryptoGO',
+              'nft',
+              'riceWallet',
+              'vision',
+              'keyring'
+            ],
             mobileLinks: [
-              'rainbow',
-              'metamask',
-              'argent',
-              'trust',
-              'imtoken',
-              'pillar'
-            ]
-          }
+              "rainbow",
+              "metamask",
+              "argent",
+              "trust",
+              "imtoken",
+              "pillar",
+            ],
+          },
         }
       },
       injected: {
@@ -44,7 +64,7 @@ export class ConnectService {
     };
 
     this.web3Modal = new Web3Modal({
-      network: 'mainnet', // optional change this with the net you want to use like rinkeby etc
+      network: 'mumbai', // optional change this with the net you want to use like rinkeby etc
       cacheProvider: false, // optional
       disableInjectedProvider: false,
       providerOptions, // required
@@ -62,15 +82,20 @@ export class ConnectService {
   async connectAccount() {
     this.provider = await this.web3Modal.connect(); // set provider
     if (this.provider) {
-      this.web3Provider = new providers.Web3Provider(this.provider);
-    } // create web3 instance
-    this.accounts = await this.provider.send("eth_requestAccounts", []);
-
-
-
-
-
-
+      this.web3js = new Web3(this.provider);
+    }
+    this.accounts = await this.web3js.eth.getAccounts();
     return this.accounts;
+  }
+
+  async accountInfo(account: any[]) {
+    const initialvalue = await this.web3js.eth.getBalance(account);
+    this.balance = this.web3js.utils.fromWei(initialvalue, 'ether');
+    return this.balance;
+  }
+
+  async getNetwork(){
+    const NetId = await this.web3js.eth.net.getNetworkType();
+    return NetId
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConnectService} from "../services/connect/connect.service";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-landing',

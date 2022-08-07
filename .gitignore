@@ -45,3 +45,6 @@ package-lock.json
 .DS_Store
 Thumbs.db
 .angular/
+
+# Local Netlify folder
+.netlify

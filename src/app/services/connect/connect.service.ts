@@ -13,6 +13,7 @@ export class ConnectService {
   web3Modal;
   web3Provider: any;
   provider: any;
+  currentAccount: any;
   accounts: string[] | undefined;
   balance: string | undefined;
   private web3js: any;
@@ -97,6 +98,12 @@ export class ConnectService {
     return this.accounts;
   }
 
+
+  async logoutAccount() {
+    this.provider = await this.web3Modal.clearCachedProvider();
+    window.localStorage.clear();
+  }
+
   async accountInfo(account: any[]) {
     const initialvalue = await this.web3js.eth.getBalance(account);
     this.balance = this.web3js.utils.fromWei(initialvalue, 'ether');
@@ -107,4 +114,6 @@ export class ConnectService {
     const NetId = await this.web3js.eth.net.getNetworkType();
     return NetId
   }
+
+
 }

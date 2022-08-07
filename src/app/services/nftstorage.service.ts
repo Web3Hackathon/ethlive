@@ -13,7 +13,7 @@ import path from 'path';
 })
 export class NFTStorageService {
   // Paste your NFT.Storage API key into the quotes:
-  readonly NFT_STORAGE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGVkNWVBODExRTczQzcwYzhGMTBjZDdhODc1RjZEQkQ4MGYxODEwNTQiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1OTg1Mzc5OTc3OSwibmFtZSI6IkVUSExpdmUifQ.vtdZNYvtXHD3MEQntL0ZYw40cqKc2Sbm8Y3KacvYaYo';
+  readonly NFT_STORAGE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEIwYTI1NzlhMkE2NjE4NENiYzE3NDczRTQ0YWEzQTEzZEQyZjkwNjAiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1OTg5MjU4OTQ2OSwibmFtZSI6IkFuZ3VsYXIifQ.RpKzLajX4Gd2HrNHiaFIteNw6zzUOdw_wQRljIuQGjI';
 
   constructor() { }
 

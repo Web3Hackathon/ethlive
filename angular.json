@@ -107,5 +107,7 @@
       }
     }
   },
-  "defaultProject": "ethlive"
+  "cli": {
+    "analytics": false
+  }
 }

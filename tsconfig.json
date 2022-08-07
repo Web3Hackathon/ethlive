@@ -2,7 +2,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "types": [
       "node"
     ],
@@ -18,7 +17,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
+    "target": "es2020",
     "module": "es2020",
     "lib": [
       "es2018",
@@ -26,9 +25,13 @@
     ]
   },
   "angularCompilerOptions": {
+    "types" : ["node"],
+    "allowSyntheticDefaultImports": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "noImplicitAny": false,
+    "strictTemplates": true,
+    "strictNullChecks": false
   }
 }

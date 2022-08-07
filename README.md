@@ -1,6 +1,17 @@
 # Ethlive
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+## Implements
+[x] Zora 
+[x] Polygon 
+[x] NFT Storage
+[x] Liverpeer
+
+
+https://mumbai.polygonscan.com/address/0xdfaddc2a245afa17633f3e989c967f6e7e504a8a
+
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14
 
 ## Development server
 

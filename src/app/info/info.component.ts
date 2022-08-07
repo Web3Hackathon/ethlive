@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from "@angular/common";
+import { ConnectService } from '../services/connect/connect.service';
 
 @Component({
   selector: 'app-info',
@@ -10,9 +11,32 @@ import { CommonModule } from "@angular/common";
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private connect: ConnectService,
+
+  ) { }
 
   ngOnInit(): void {
   }
+
+
+
+mintSub(){
+  this.connect.connectAccount().then(response =>{
+    console.log(response[0]);
+const account = response[0];
+this.connect.Subscribe(account, 2).then(response =>{
+  console.log(response);
+}).catch((error:any) =>{
+console.error(error);
+});
+  }).catch((error:any) =>{
+    console.error(error);
+  });
+
+
+}
+
+
 
 }

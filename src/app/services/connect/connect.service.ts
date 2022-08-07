@@ -4,12 +4,15 @@ import Web3Modal from 'web3modal';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import Web3 from "web3";
 
+
+const ethLive = require('../../../../contract/SubscriptionEthLive.json');
+
 @Injectable({
   providedIn: 'root'
 })
 export class ConnectService {
   readonly apikey = 'e4fa10cddeaf401698a3ae52121cdd79';
-
+  contractDir = '0xdFADdC2A245afA17633f3E989c967F6e7E504a8a'
   web3Modal;
   web3Provider: any;
   provider: any;
@@ -114,6 +117,39 @@ export class ConnectService {
     const NetId = await this.web3js.eth.net.getNetworkType();
     return NetId
   }
+
+  async getContract() {
+    const contract = new this.web3js.eth.Contract(
+      ethLive.abi,
+        'mumbai' && this.contractDir
+    )
+    return contract
+
+}
+
+async Subscribe(account:any, id: number){
+  this.getContract().then(contract => {
+    const amount = '2000000000000000'
+    contract.methods.join(id)
+        .send({
+            from: account,
+            to: this.contractDir,
+            gas: 0,
+            id: id,
+            value: amount
+        })
+        .on('transactionHash', function (hash: any) {
+            console.log('joinning transaction hash: ' + hash);
+        })
+        .on('receipt', function (response: any) {
+            console.log('Finished' + response);
+        }).catch((err: any) => {
+        console.error(err)
+    });
+})
+}
+
+
 
 
 }

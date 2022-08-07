@@ -24,15 +24,33 @@ export class ConnectService {
           infuraId: 'env', // required change this with your own infura id
           description: 'Scan the qr code and sign in',
           qrcodeModalOptions: {
+            desktopLinks: [
+              'ledger',
+              'tokenary',
+              'wallet',
+              'wallet 3',
+              'secuX',
+              'ambire',
+              'wallet3',
+              'apolloX',
+              'zerion',
+              'sequence',
+              'punkWallet',
+              'kryptoGO',
+              'nft',
+              'riceWallet',
+              'vision',
+              'keyring'
+            ],
             mobileLinks: [
-              'rainbow',
-              'metamask',
-              'argent',
-              'trust',
-              'imtoken',
-              'pillar'
-            ]
-          }
+              "rainbow",
+              "metamask",
+              "argent",
+              "trust",
+              "imtoken",
+              "pillar",
+            ],
+          },
         }
       },
       injected: {
@@ -46,7 +64,7 @@ export class ConnectService {
     };
 
     this.web3Modal = new Web3Modal({
-      network: 'mainnet', // optional change this with the net you want to use like rinkeby etc
+      network: 'mumbai', // optional change this with the net you want to use like rinkeby etc
       cacheProvider: false, // optional
       disableInjectedProvider: false,
       providerOptions, // required
@@ -65,7 +83,7 @@ export class ConnectService {
     this.provider = await this.web3Modal.connect(); // set provider
     if (this.provider) {
       this.web3js = new Web3(this.provider);
-    } // create web3 instance
+    }
     this.accounts = await this.web3js.eth.getAccounts();
     return this.accounts;
   }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { providers } from 'ethers';
 import Web3Modal from 'web3modal';
 
 import WalletConnectProvider from '@walletconnect/web3-provider';
+import Web3 from "web3";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,9 @@ export class ConnectService {
   web3Modal;
   web3Provider: any;
   provider: any;
-  accounts: any| undefined;
+  accounts: string[] | undefined;
+  balance: string | undefined;
+  private web3js: any;
 
 
   constructor() {
@@ -62,15 +64,20 @@ export class ConnectService {
   async connectAccount() {
     this.provider = await this.web3Modal.connect(); // set provider
     if (this.provider) {
-      this.web3Provider = new providers.Web3Provider(this.provider);
+      this.web3js = new Web3(this.provider);
     } // create web3 instance
-    this.accounts = await this.provider.send("eth_requestAccounts", []);
-
-
-
-
-
-
+    this.accounts = await this.web3js.eth.getAccounts();
     return this.accounts;
+  }
+
+  async accountInfo(account: any[]) {
+    const initialvalue = await this.web3js.eth.getBalance(account);
+    this.balance = this.web3js.utils.fromWei(initialvalue, 'ether');
+    return this.balance;
+  }
+
+  async getNetwork(){
+    const NetId = await this.web3js.eth.net.getNetworkType();
+    return NetId
   }
 }
